@@ -1,8 +1,10 @@
 {
   "tasks": {
-    "serve": "deno run --watch --allow-net --allow-read serve.ts"
+    "serve": "deno run --watch --allow-net --allow-read src/serve.ts",
+    "generate": "deno run --allow-write --allow-read src/main.ts"
   },
   "imports": {
+    "@mary/async-iterator-fns": "jsr:@mary/async-iterator-fns@^0.1.1",
     "@std/assert": "jsr:@std/assert@1"
   }
 }

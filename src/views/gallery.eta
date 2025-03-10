@@ -10,18 +10,25 @@
             height: 100px;
             border: 1px solid black;
         }
+
         html {
             background-color: #145682;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
         }
     </style>
     <title>Gallery</title>
 </head>
 <body>
-<% for (let group of it.iconsData) { %>
-<h1><%= group.dir %></h1>
-<div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-    <% for (let icon of group.icons) { %>
-    <div title="<%= icon.path %>"><%~ icon.content %></div>
+<% for (let [group, icons] of it.iconsData.entries()) { %>
+<h1><%= group %></h1>
+<div class="group">
+    <% for (let icon of icons) { %>
+    <div title="<%= icon.path %>"><%~ await icon.getContent() %></div>
     <% } %>
 </div>
 <% } %>
